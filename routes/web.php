@@ -12,6 +12,14 @@
 */
 //Route::group(['middleware'=>['auth']], function(){
 Route::get('/','PostController@index');
+Route::get('/question','PostController@question');
+Route::get('/weapon/create','PostController@weapon');
+Route::get('/user/profile','PostController@profile');
+
+Route::post('/weapon', 'PostController@store_weapon');
+Route::post('/user','PostController@store_user');
 //});
+
+
 Auth::routes();
 Route::get('/home','HomeController@index')->name('home');

@@ -22,6 +22,7 @@ class CreateTeamsTable extends Migration
             $table->string('weapon_wanted');
             $table->text('comment');
             $table->bigInteger('friendcode');
+            $table->timestamps();
         });
     }
 

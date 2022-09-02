@@ -4,18 +4,22 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePositionsTable extends Migration
+class Opponents extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+        public function up()
     {
-        Schema::create('positions', function (Blueprint $table) {
+        Schema::create('opponents', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('rule');
+            $table->bigInteger('win_number');
+            $table->string('rank');
+            $table->text('comment');
+            $table->bigInteger('friendcode');
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ class CreatePositionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('positions');
+        //
     }
 }
