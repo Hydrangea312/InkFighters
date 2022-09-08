@@ -3,3 +3,13 @@
 p{
     font-size:30px;
 }
+.btn input:checked+lavel{
+    background: #1a720d;
+    color: #FFF;
+}
+
+.box1{
+     padding: 10px;
+     margin-bottom: 10px;
+     border: 1px solid #333333;
+}

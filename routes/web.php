@@ -14,12 +14,14 @@
 Route::get('/','PostController@index');
 Route::get('/question','PostController@question');
 Route::get('/weapon/create','PostController@weapon');
-Route::get('/user/profile','PostController@profile');
+Route::get('/profile/{user}','PostController@profile');
+Route::get('/team/want','PostController@team_wanted');
+Route::get('/team/want/post','PostController@team_post');
+
 
 Route::post('/weapon', 'PostController@store_weapon');
 Route::post('/user','PostController@store_user');
-//});
-
+Route::post('/team','PostController@store_team');
 
 Auth::routes();
 Route::get('/home','HomeController@index')->name('home');
