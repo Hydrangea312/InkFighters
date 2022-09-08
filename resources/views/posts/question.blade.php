@@ -1,18 +1,3 @@
-<!DOCTYPE html>
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <head>
-        <meta charset="utf-8">
-        <title>Blog</title>
-        <!-- Fonts -->
-        <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Nu2nito:wght@200;600&display=swap" rel="stylesheet">
-        <!-- Styles -->
-    </head>
-    <body>
-        
         @extends('layouts.app')
         @section('content')
         
@@ -26,21 +11,24 @@
 
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">トップページ</a></li>
-            <li class="breadcrumb-item"><a href="#">チーム募集</a></li>
-            <li class="breadcrumb-item"><a href="#">対抗戦相手募集</a></li>
-            <li class="breadcrumb-item"><a href="#">即席味方募集</a></li>
+            <li class="breadcrumb-item">トップページ</li>
+            <li class="breadcrumb-item">チーム募集</li>
+            <li class="breadcrumb-item">対抗戦相手募集</li>
+            <li class="breadcrumb-item">即席味方募集</li>
+            <li class="breadcrumb-item">プロフィール</li>
           </ol>  
           
-    <form action="/posts" method="POST">
+    <form action="/user" method="POST">
         @csrf
         <div style="padding: 10px; margin-bottom: 10px; width=50%;　display=flexbox; border: 1px solid #333333;">
         <p>持ち武器を選択してください</p>
-                <div class="category">
+                <div class="weapon">
                     <h2>武器選択</h2>
-                    <select name="post[category_id]">
+                    <select name="weapon[]">
                     @foreach($weapons as $weapon)
-                    <option value="{{ $weapon->id}}">{{ $weapon->name }}</option>
+
+                    <option value="{{ $weapon->id }}">{{ $weapon->name }}</option>
+
                     @endforeach
                     </select>
                 </div>
@@ -48,32 +36,58 @@
 
         <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
             <p>あなたのポジションを選択してください</p>
-            <button type="button" style="margin:25px" class="btn btn-danger">前衛</button>
-            <button type="button" style="margin:25px" class="btn btn-primary">中衛</button>
-            <button type="button" style="margin:25px" class="btn btn-success">後衛</button>
+            <button type="button" style="margin:25px" onclick="document.all.item('moji1').style.visibility='visible',addAnswer1();" id="front" class="btn btn-danger" value="前衛">前衛</button>
+            <button type="button" style="margin:25px" onclick="document.all.item('moji2').style.visibility='visible',addAnswer2();" id="middle" class="btn btn-primary" value="中衛">中衛</button>
+            <button type="button" style="margin:25px" onclick="document.all.item('moji3').style.visibility='visible'" id="rear" class="btn btn-success">後衛</button>
+            <p>選択されたポジション　下のボタンをクリックしたら解除できます</p>
+            <div type="button" ID="moji1" style="visibility:hidden;"　class="btn btn-danger"　onclick="this.style.visibility='hidden'">
+            前衛
+            </div>
+            <div type="button" ID="moji2" style="visibility:hidden;"　class="btn btn-primary"　onclick="this.style.visibility='hidden'">
+            中衛
+            </div>
+            <div type="button" ID="moji3" style="visibility:hidden;"　class="btn btn-success"　onclick="this.style.visibility='hidden'">
+            後衛
+            </div>
         </div>
+
         
 　　　  <div style="padding: 10px; margin-bottom: 10px; width=50%; border: 1px solid #333333;">
-
             <div class="title">
                 <p>チーム名を入力してください。 ※所属している場合のみ</p>
                 <input type="text" name="post[title]" placeholder="チーム名" value="{{old('post.title')}}"/>
                 <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
             </div>
         </div>
+        <input type="submit" value="保存"/>
     </form>
         
         
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">トップページ</a></li>
-            <li class="breadcrumb-item"><a href="#">チーム募集</a></li>
-            <li class="breadcrumb-item"><a href="#">対抗戦相手募集</a></li>
-            <li class="breadcrumb-item"><a href="#">即席味方募集</a></li>
+            <li class="breadcrumb-item">トップページ</li>
+            <li class="breadcrumb-item">チーム募集</li>
+            <li class="breadcrumb-item">対抗戦相手募集</li>
+            <li class="breadcrumb-item">即席味方募集</li>
+            <li class="breadcrumb-item">プロフィール</li>
           </ol>  
         </nav>
         
+        <script>
+        function addAnswer1() 
+        {
+            front = document.getElementById("front")
+            answerText = front.value
+            answer.innerText = "  " + answerText + "  "
+        }
+        
+        function addAnswer2() 
+        {
+            middle = document.getElementById("middle")
+            answerText = middle.value
+            answer.innerText = "  " + answerText + "  "
+        }
+        </script>
+        
+        
         @endsection
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    </body>
-</html>

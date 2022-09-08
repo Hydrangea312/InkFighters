@@ -9,14 +9,12 @@
         
         <p>----後で消す----</p>
         <a href="/question">question</a>/
-        <a href="/weapon/create">weapon</a>/
-        <a href="/team/want">チーム募集</a>/
-        <a href="/team/want">チーム投稿一覧</a>/
+        <a href="/weapon/create">weapon</a>
         <p>-----------------</p>
 
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a>トップページ</a></li>
+            <li class="breadcrumb-item"><a href="/">トップページ</a></li>
             <li class="breadcrumb-item"><a href="#">チーム募集</a></li>
             <li class="breadcrumb-item"><a href="#">対抗戦相手募集</a></li>
             <li class="breadcrumb-item"><a href="#">即席味方募集</a></li>
@@ -28,16 +26,51 @@
           </ol>  
         </nav>
         
-        <h2>サイトの説明</h2>
-        <p>aaa</p>
-        <h2>ルール</h2>
-        <p>bbb</p>
-        <h2>プロフィール作成のお願い</h2>
-        <p>ccc</p>
         
+        <center><h1>チーム募集</h1></center>
+        <center><a class="btn btn-primary" href="/team/want/post" role="button">投稿作成</a></center>
+        
+        <div class='students'>
+
+    {{-- チームの数だけ繰り返す --}}
+    @foreach($teams as $team)
+    <div class="box1">
+        チーム名:
+        <h3 class='team'>{{ $team->team }}</h3>  
+        モチベーション:
+        <h5 class="id">{{ $team->motivation }}</h5>
+        募集人数:
+        <h5 class='number_applicant'>{{ $team->number_applicant }}</h5>
+        チーム説明:
+        <h5 class='age'>{{ $team->comment }}</h5>
+        
+        
+        募集ポジション:
+        <h5 class='position'>
+        @foreach($team->positions as $position)   
+            {{ $position->name }}
+        @endforeach
+        </h5>
+        募集武器
+        <h5 class='weapon'>
+        @foreach($team->weapons as $weapon)   
+            {{ $weapon->name }}
+        @endforeach
+        </h5>
+   </div>      
+    @endforeach
+    
+
+        
+        
+         
+         
+         </div>
+
+
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a>トップページ</a></li>
+            <li class="breadcrumb-item"><a href="/">トップページ</a></li>
             <li class="breadcrumb-item"><a href="#">チーム募集</a></li>
             <li class="breadcrumb-item"><a href="#">対抗戦相手募集</a></li>
             <li class="breadcrumb-item"><a href="#">即席味方募集</a></li>
@@ -48,4 +81,6 @@
             @endif
           </ol>  
         </nav>
+        
+        
         @endsection

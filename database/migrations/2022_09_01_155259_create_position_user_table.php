@@ -14,8 +14,8 @@ class CreatePositionUserTable extends Migration
     public function up()
     {
         Schema::create('position_user', function (Blueprint $table) {
-            $table->integer('position_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->unsignedBigInteger('position_id');
+            $table->unsignedBigInteger('user_id');
             $table->primary(['position_id','user_id']);
             $table->timestamps();
         });

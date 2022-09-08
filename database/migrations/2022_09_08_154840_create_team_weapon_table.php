@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserWeaponTable extends Migration
+class CreateTeamWeaponTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateUserWeaponTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_weapon', function (Blueprint $table) {
- 
-            $table->bigInteger('user_id')->unsigned();
+        Schema::create('team_weapon', function (Blueprint $table) {
+            $table->bigInteger('team_id')->unsigned();
             $table->bigInteger('weapon_id')->unsigned();
-            $table->primary(['user_id','weapon_id']);
+            $table->primary(['team_id','weapon_id']);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateUserWeaponTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_weapon');
+        Schema::dropIfExists('team_weapon');
     }
 }
