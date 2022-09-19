@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class WeaponSeeder extends Seeder
+class RuleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,16 +11,20 @@ class WeaponSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('weapons')->insert([
-       [ 'name' => 'スプラシューター',
+        DB::table('rules')->insert([
+       [ 'name' => 'エリア',
         'created_at' => new DateTime(),
         'updated_at' => new DateTime(),
         ],
-       [ 'name' => 'スプラシューターコラボ',
+       [ 'name' => 'ヤグラ',
         'created_at' => new DateTime(),
         'updated_at' => new DateTime(),
         ],
-        [ 'name' => 'ダイナモローラー',
+        [ 'name' => 'ホコ',
+        'created_at' => new DateTime(),
+        'updated_at' => new DateTime(),
+        ],
+        [ 'name' => 'アサリ',
         'created_at' => new DateTime(),
         'updated_at' => new DateTime(),
         ],

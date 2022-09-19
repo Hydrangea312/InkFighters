@@ -28,6 +28,12 @@ class Team extends Model
         
         public function positions()
         {
-            return $this->belongsToMany('App\Position');
+            return $this->belongsToMany('App\Position');//リレーション
         }
+        
+        public function getPaginateByLimit(int $limit_count = 5)//ぺジネーション
+        {
+            return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        }
+
 }

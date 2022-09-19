@@ -17,11 +17,13 @@ Route::get('/weapon/create','PostController@weapon');
 Route::get('/profile/{user}','PostController@profile');
 Route::get('/team/want','PostController@team_wanted');
 Route::get('/team/want/post','PostController@team_post');
-
+Route::get('/opponent/want','PostController@opponent_wanted');
+Route::get('/opponent/want/post','PostController@opponent_post');
 
 Route::post('/weapon', 'PostController@store_weapon');
 Route::post('/user','PostController@store_user');
 Route::post('/team','PostController@store_team');
+Route::post('/opponent','PostController@store_opponent');
 
 Auth::routes();
 Route::get('/home','HomeController@index')->name('home');

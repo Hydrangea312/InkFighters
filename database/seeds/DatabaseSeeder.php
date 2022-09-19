@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(PositionSeeder::class);
         $this->call(WeaponSeeder::class);
+        $this->call(RuleSeeder::class);
     }
 }
