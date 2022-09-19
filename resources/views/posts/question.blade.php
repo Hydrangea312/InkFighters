@@ -36,29 +36,21 @@
 
         <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
             <p>あなたのポジションを選択してください</p>
-            <button type="button" style="margin:25px" onclick="document.all.item('moji1').style.visibility='visible',addAnswer1();" id="front" class="btn btn-danger" value="前衛">前衛</button>
-            <button type="button" style="margin:25px" onclick="document.all.item('moji2').style.visibility='visible',addAnswer2();" id="middle" class="btn btn-primary" value="中衛">中衛</button>
-            <button type="button" style="margin:25px" onclick="document.all.item('moji3').style.visibility='visible'" id="rear" class="btn btn-success">後衛</button>
+            <input name="user" type="button" style="margin:25px" onclick="addAnswer('moji1')" id="front" class="btn btn-danger"  value="前衛"/>
+            <button type="button" style="margin:25px" onclick="addAnswer('moji2')" id="middle" class="btn btn-primary" value="中衛">中衛</button>
+            <button type="button" style="margin:25px" onclick="addAnswer('moji3')" id="rear" class="btn btn-success">後衛</button>
             <p>選択されたポジション　下のボタンをクリックしたら解除できます</p>
-            <div type="button" ID="moji1" style="visibility:hidden;"　class="btn btn-danger"　onclick="this.style.visibility='hidden'">
+            <div type="button" ID="moji1" style="visibility:hidden;"　class="btn btn-danger"　onclick="removeAnswer('moji1')">
             前衛
             </div>
-            <div type="button" ID="moji2" style="visibility:hidden;"　class="btn btn-primary"　onclick="this.style.visibility='hidden'">
+            <div type="button" ID="moji2" style="visibility:hidden;"　class="btn btn-primary"　onclick="removeAnswer('moji2')">
             中衛
             </div>
-            <div type="button" ID="moji3" style="visibility:hidden;"　class="btn btn-success"　onclick="this.style.visibility='hidden'">
+            <div type="button" ID="moji3" style="visibility:hidden;"　class="btn btn-success"　onclick="removeAnswer('moji3')">
             後衛
             </div>
         </div>
 
-        
-　　　  <div style="padding: 10px; margin-bottom: 10px; width=50%; border: 1px solid #333333;">
-            <div class="title">
-                <p>チーム名を入力してください。 ※所属している場合のみ</p>
-                <input type="text" name="post[title]" placeholder="チーム名" value="{{old('post.title')}}"/>
-                <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
-            </div>
-        </div>
         <input type="submit" value="保存"/>
     </form>
         
@@ -74,18 +66,19 @@
         </nav>
         
         <script>
-        function addAnswer1() 
+        function addAnswer(element) 
         {
-            front = document.getElementById("front")
-            answerText = front.value
-            answer.innerText = "  " + answerText + "  "
+            var e = document.all.item(element);
+            e.style.visibility='visible';
+            e.setAttribute('name', 'user');
+
         }
         
-        function addAnswer2() 
+        function removeAnswer(element) 
         {
-            middle = document.getElementById("middle")
-            answerText = middle.value
-            answer.innerText = "  " + answerText + "  "
+            var e = document.all.item(element);
+            e.style.visibility='hidden';
+            e.removeAttribute('name');
         }
         </script>
         

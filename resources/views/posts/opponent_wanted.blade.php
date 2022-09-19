@@ -9,15 +9,12 @@
         
         <p>----後で消す----</p>
         <a href="/question">question</a>/
-        <a href="/weapon/create">weapon</a>/
-        <a href="/team/want">チーム募集</a>/
-        <a href="/team/want">チーム投稿一覧</a>/
-        <a href="/opponent/want/post">対戦相手募集</a>
+        <a href="/weapon/create">weapon</a>
         <p>-----------------</p>
 
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a>トップページ</a></li>
+            <li class="breadcrumb-item"><a href="/">トップページ</a></li>
             <li class="breadcrumb-item"><a href="#">チーム募集</a></li>
             <li class="breadcrumb-item"><a href="#">対抗戦相手募集</a></li>
             <li class="breadcrumb-item"><a href="#">即席味方募集</a></li>
@@ -29,16 +26,36 @@
           </ol>  
         </nav>
         
-        <h2>サイトの説明</h2>
-        <p>aaa</p>
-        <h2>ルール</h2>
-        <p>bbb</p>
-        <h2>プロフィール作成のお願い</h2>
-        <p>ccc</p>
         
+        <center><h1>対戦相手募集</h1></center>
+        <center><a class="btn btn-primary" href="/opponent/want/post" role="button">投稿作成</a></center>
+        
+        <div class='opponent_wanteds'>
+
+            @foreach($opponents as $opponent)
+            <div class="box1">
+                ルール:
+                <h3 class='rule'>{{ $opponent->rule }}</h3>  
+                本数:
+                <h5 class="win_number">{{ $opponent->win_number }}</h5>
+                ウデマエ:
+                <h5 class='rank'>{{ $opponent->rank }}</h5>
+                コメント:
+                <h5 class='comment'>{{ $opponent->comment }}</h5>
+                フレンドコード
+                <h5 class='friendcode'>{{ $opponent->friendcode }}</h5>
+        
+           </div>      
+            @endforeach
+            <div class='paginate'>
+                    {{ $opponents->links() }}
+            </div>
+       </div>
+
+
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a>トップページ</a></li>
+            <li class="breadcrumb-item"><a href="/">トップページ</a></li>
             <li class="breadcrumb-item"><a href="#">チーム募集</a></li>
             <li class="breadcrumb-item"><a href="#">対抗戦相手募集</a></li>
             <li class="breadcrumb-item"><a href="#">即席味方募集</a></li>
@@ -49,4 +66,6 @@
             @endif
           </ol>  
         </nav>
+        
+        
         @endsection

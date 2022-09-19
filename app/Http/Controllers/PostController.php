@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Opponent;
 use App\Position;
 use App\Post;
 use App\Team;
 use App\User;
 use App\Weapon;
+use App\Rule;
 
 use App\Http\Requests\PostRequest;
 
@@ -35,7 +37,7 @@ class PostController extends Controller
         
         public function team_wanted(Team $team)
         {
-          return view('posts/team_wanted')->with(['teams'=>$team->get()]);
+          return view('posts/team_wanted')->with(['teams'=>$team->getPaginateByLimit()]);
         }
         
         public function team_post(Position $position,Weapon $weapon)
@@ -43,10 +45,16 @@ class PostController extends Controller
           return view('posts/team_post')->with(['positions'=>$position->get() , 'weapons'=>$weapon->get()]);;
         }
         
-        public function team_post2(Position $position,Weapon $weapon)
+        public function opponent_post(Rule $rule,Opponent $opponent)
         {
-          return view('posts/team_post2')->with(['positions'=>$position->get() , 'weapons'=>$weapon->get()]);;
+          return view('posts/opponent_post')->with(['rules'=>$rule->get() , 'opponents'=>$opponent->get()]);;
         }
+        
+        public function opponent_wanted(Opponent $opponent)
+        {
+          return view('posts/opponent_wanted')->with(['opponents'=>$opponent->getPaginateByLimit()]);;
+        }
+        
         
         public function store_weapon(Weapon $weapon,PostRequest $request)
         {
@@ -69,11 +77,23 @@ class PostController extends Controller
             return redirect('/team/want');
         }
         
-        public function store_user(User $user,PostRequest $request)
+        public function store_user(User $user,Request $request)
         {
+         
           $input = $request['user'];
-          $user->fill($input)->save();
-          return redirect('/weapon/create');
+          dd($input);
+          $user->fill($input);
+          $user->question=1;
+          $user->save();
+          return redirect('/');
+        }
+        
+        public function store_opponent(Opponent $opponent,PostRequest $request)
+        {
+          //dd($request->all());
+          $input = $request['opponent'];
+          $opponent->fill($input)->save();
+          return redirect('/opponent/want');
         }
       
       

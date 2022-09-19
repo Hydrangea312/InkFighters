@@ -30,7 +30,7 @@
         <center><h1>チーム募集</h1></center>
         <center><a class="btn btn-primary" href="/team/want/post" role="button">投稿作成</a></center>
         
-        <div class='students'>
+        <div class='teams'>
 
     {{-- チームの数だけ繰り返す --}}
     @foreach($teams as $team)
@@ -59,6 +59,9 @@
         </h5>
    </div>      
     @endforeach
+    <div class='paginate'>
+            {{ $teams->links() }}
+    </div>
     
 
         
