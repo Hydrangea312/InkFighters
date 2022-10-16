@@ -13,16 +13,7 @@
         @extends('layouts.app')
         @section('content')
         @if(isset( Auth::user()->name ))
-        <p>{{ Auth::user()->name }}</p>
-        @else
-        <p>ゲスト</p>
-        @endif
-        <center><h1>Ink Fighters</h1></center>
-        
-        <p>----後で消す----</p>
-        <a href="/question">question</a>/
-        <a href="/weapon/create">weapon</a>
-        <p>-----------------</p>
+
 
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
