@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable(true);
             $table->unsignedBigInteger('team_id')->nullable(true);
-            // $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade'); 
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade'); 
             $table->string('email')->unique()->nullable(true);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable(true);

@@ -19,6 +19,15 @@
         <center><h1>対戦相手募集</h1></center>
         <center><a class="btn btn-primary" href="/opponent/want/post" role="button">投稿作成</a></center>
         
+        <form action="/opponent/want" method="GET">
+        <select name="rule">
+          @foreach($rules as $rule)
+          <option  value="{{ $rule->name }}">{{ $rule->name }}</option>
+          @endforeach
+        </select>
+        <input type="submit" value="検索" />
+        </form>
+        
         <div class='opponent_wanteds'>
 
             @foreach($opponents as $opponent)
