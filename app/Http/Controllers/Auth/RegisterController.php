@@ -24,6 +24,10 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+   public function redirectPath()
+   {
+       return '/user/'. $this->guard()->user()->id .'/question';
+   }
     /**
      * Where to redirect users after registration.
      *

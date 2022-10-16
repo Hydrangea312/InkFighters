@@ -37,4 +37,15 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    
+    public function redirectTo()
+    {
+        $question = $this->guard()->user()->question;
+        if($question === 0)
+        {
+           return '/user/'. $this->guard()->user()->id .'/question';
+        }
+        return '/';
+    }
+
 }
