@@ -21,6 +21,7 @@
     <form action="/user/{{ Auth::id() }}" method="POST">
         @csrf
         @method('PUT')
+        <input type="submit" value="保存"/>
         <div class=box2>
             <p>あなたのポジションを選択してください</p>
             <input type="button" style="margin:25px" onclick="addAnswer('moji1')" id="front" class="btn btn-danger"  value="前衛" />
@@ -49,6 +50,12 @@
             
         </div>
         
+        <div class=friendcode>
+            <div class=box2>
+            <p>フレンドコードを入力してください</p>
+            <input type="text" name="user[friendcode]" placeholder="フレンドコード" value="{{ old('user.friendcode') }}" />
+            </div>
+        </div>
         
         <div class="weapon">
             <div class=box2>
@@ -62,15 +69,6 @@
                 </div>
             </div>
         </div>
-        
-        <div class=friendcode>
-          <div class=box2>
-            <p>フレンドコードを入力してください</p>
-             <input type="text" name="user[friendcode]" placeholder="フレンドコード" value="{{ old('user.friendcode') }}" />
-          </div>
-        </div>
-
-        <input type="submit" value="保存"/>
     </form>
         
         

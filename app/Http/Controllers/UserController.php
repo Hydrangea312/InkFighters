@@ -37,6 +37,7 @@ class UserController extends Controller
         return redirect('/profile/'. Auth::user()->id );
         }
         
+ 
        
     public function store_user(Request $request)
         {
