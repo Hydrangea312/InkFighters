@@ -14,7 +14,7 @@ class CreateTeamsTable extends Migration
     public function up()
     {
         Schema::create('teams', function (Blueprint $table) {
-            $table->bigIncrements('id')->nullable(true);
+            $table->bigIncrements('id');
             $table->string('team',50)->nullable(true);
             $table->bigInteger('motivation')->nullable(true);
             $table->bigInteger('number_applicant')->nullable(true);
