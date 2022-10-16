@@ -18,7 +18,6 @@ class CreateUserWeaponTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('weapon_id')->unsigned();
             $table->primary(['user_id','weapon_id']);
-            $table->timestamps();
         });
     }
 

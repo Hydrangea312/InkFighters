@@ -17,7 +17,6 @@ class CreatePositionTeamTable extends Migration
             $table->bigInteger('position_id')->unsigned();
             $table->bigInteger('team_id')->unsigned();
             $table->primary(['position_id','team_id']);
-            $table->timestamps();
         });
     }
 

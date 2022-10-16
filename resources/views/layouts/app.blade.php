@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="https://unpkg.com/vue-star-rating/dist/VueStarRating.umd.min.js"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -26,10 +26,16 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'IkaFighters') }}
+                    <center><h1>Ink Fighters</h1></center>
+                    @if(isset( Auth::user()->name ))
+                    <p><ログイン中>{{ Auth::user()->name }}</p>
+                    @else
+                    <p><ログイン/新規登録してください>ゲスト</p>
+                    @endif
+                  {{--  {{ config('IkaFighters', 'IkaFighters') }} --}}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -45,31 +51,37 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
+                            <button type="button" class="btn btn-primary">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
                             </li>
+                            </button>
                             @if (Route::has('register'))
+                                <button type="button" class="btn btn-success">
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('新規登録') }}</a>
                                 </li>
+                                </button>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                                <!--<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>-->
+                                    <!--<button type="button" class="btn btn-light">ログアウト</button><span class="caret"></span>-->
+                                <!--</a>-->
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <!--<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">-->
+                                    <button type="button" class="btn btn-light">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                 if(confirm('ログアウトしますか？'))document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
+                                    </button>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                </div>
+                                <!--</div>-->
                             </li>
                         @endguest
                     </ul>

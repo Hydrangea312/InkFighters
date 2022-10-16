@@ -17,7 +17,6 @@ class CreateTeamWeaponTable extends Migration
             $table->bigInteger('team_id')->unsigned();
             $table->bigInteger('weapon_id')->unsigned();
             $table->primary(['team_id','weapon_id']);
-            $table->timestamps();
         });
     }
 
