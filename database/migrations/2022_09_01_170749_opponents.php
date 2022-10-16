@@ -14,7 +14,7 @@ class Opponents extends Migration
         public function up()
     {
         Schema::create('opponents', function (Blueprint $table) {
-            $table->bigIncrements('id')->nullable(true);
+            $table->bigIncrements('id');
             $table->string('rule',10)->nullable(true);
             $table->bigInteger('win_number')->nullable(true);
             $table->string('rank',10)->nullable(true);
