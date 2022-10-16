@@ -31,8 +31,6 @@ class TeamController extends Controller
         
     public function store_team(PostRequest $request, Team $team ,Weapon $weapon)
         {
-            
-            
             $input_team = $request['team'];
             $input_positions = $request->positions_array;
             $input_weapons = $request->weapons_array;
