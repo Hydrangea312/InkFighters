@@ -22,6 +22,7 @@ Route::get('/opponent/want','OpponentController@opponent_wanted');
 Route::get('/opponent/want/post','OpponentController@opponent_post');
 Route::get('/team/profile/{team}','TeamController@profile');
 
+
 //Route::post('/user','UserController@store_user');
 Route::post('/team','TeamController@store_team');
 Route::post('/opponent','OpponentController@store_opponent');

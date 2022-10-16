@@ -36,6 +36,7 @@ class UserController extends Controller
         $user->save();
         return redirect('/profile/'. Auth::user()->id );
         }
+        
        
     public function store_user(Request $request)
         {
