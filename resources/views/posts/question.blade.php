@@ -9,36 +9,25 @@
         
         <center><h1>Ink Fighters</h1></center>
 
-        <nav aria-label="breadcrumb">
+       {{-- <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">トップページ</li>
             <li class="breadcrumb-item">チーム募集</li>
             <li class="breadcrumb-item">対抗戦相手募集</li>
             <li class="breadcrumb-item">即席味方募集</li>
             <li class="breadcrumb-item">プロフィール</li>
-          </ol>  
+          </ol>  --}}
           
-    <form action="/user" method="POST">
+    <form action="/user/{{ Auth::id() }}" method="POST">
         @csrf
-        <div style="padding: 10px; margin-bottom: 10px; width=50%;　display=flexbox; border: 1px solid #333333;">
-        <p>持ち武器を選択してください</p>
-                <div class="weapon">
-                    <h2>武器選択</h2>
-                    <select name="weapon[]">
-                    @foreach($weapons as $weapon)
-
-                    <option value="{{ $weapon->id }}">{{ $weapon->name }}</option>
-
-                    @endforeach
-                    </select>
-                </div>
-        </div>
-
-        <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
+        @method('PUT')
+        <div class=box2>
             <p>あなたのポジションを選択してください</p>
-            <input name="user" type="button" style="margin:25px" onclick="addAnswer('moji1')" id="front" class="btn btn-danger"  value="前衛"/>
-            <button type="button" style="margin:25px" onclick="addAnswer('moji2')" id="middle" class="btn btn-primary" value="中衛">中衛</button>
-            <button type="button" style="margin:25px" onclick="addAnswer('moji3')" id="rear" class="btn btn-success">後衛</button>
+            <input type="button" style="margin:25px" onclick="addAnswer('moji1')" id="front" class="btn btn-danger"  value="前衛" />
+            <input type="button" style="margin:25px" onclick="addAnswer('moji2')" id="middle" class="btn btn-primary" value="中衛"/>
+            <input type="button" style="margin:25px" onclick="addAnswer('moji3')" id="rear" class="btn btn-success" value="後衛"/>
+            <input type="button" style="margin:25px" onclick="addAnswer('moji4')" id="paint" class="btn btn-light" value="塗り特化"/>
+            <input type="button" style="margin:25px" onclick="addAnswer('moji5')" id="killer" class="btn btn-dark" value="キル特化"/>
             <p>選択されたポジション　下のボタンをクリックしたら解除できます</p>
             <div type="button" ID="moji1" style="visibility:hidden;"　class="btn btn-danger"　onclick="removeAnswer('moji1')">
             前衛
@@ -49,13 +38,43 @@
             <div type="button" ID="moji3" style="visibility:hidden;"　class="btn btn-success"　onclick="removeAnswer('moji3')">
             後衛
             </div>
+            <div type="button" ID="moji4" style="visibility:hidden;"　class="btn btn-light"　onclick="removeAnswer('moji4')">
+            塗り特化
+            </div>
+            <div type="button" ID="moji5" style="visibility:hidden;"　class="btn btn-dark"　onclick="removeAnswer('moji5')">
+            キル特化
+            </div>
+            
+            <div id="position"></div>
+            
+        </div>
+        
+        
+        <div class="weapon">
+            <div class=box2>
+              <p>持ち武器を選択してください</p>
+              <p>武器選択</p>
+                    @foreach($weapons as $weapon)
+                        <input type="checkbox" value="{{ $weapon->id }}" name="weapons_array[]">
+                            {{ $weapon->name }}
+                        </input>
+                   @endforeach 
+                </div>
+            </div>
+        </div>
+        
+        <div class=friendcode>
+          <div class=box2>
+            <p>フレンドコードを入力してください</p>
+             <input type="text" name="user[friendcode]" placeholder="フレンドコード" value="{{ old('user.friendcode') }}" />
+          </div>
         </div>
 
         <input type="submit" value="保存"/>
     </form>
         
         
-        <nav aria-label="breadcrumb">
+       {{-- <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">トップページ</li>
             <li class="breadcrumb-item">チーム募集</li>
@@ -63,22 +82,29 @@
             <li class="breadcrumb-item">即席味方募集</li>
             <li class="breadcrumb-item">プロフィール</li>
           </ol>  
-        </nav>
+        </nav>--}}
         
         <script>
         function addAnswer(element) 
         {
             var e = document.all.item(element);
             e.style.visibility='visible';
-            e.setAttribute('name', 'user');
-
+            const node = document.createElement('input');
+            const div = document.getElementById("position");
+            if(!(!!document.getElementById(element+'L'))){
+            node.setAttribute('type','hidden');
+            node.setAttribute('name','positions_array[]');
+            node.setAttribute('id',element+'L');
+            node.setAttribute('value',Number(element.slice(-1)));
+            div.appendChild(node);
+            }
         }
         
         function removeAnswer(element) 
         {
             var e = document.all.item(element);
             e.style.visibility='hidden';
-            e.removeAttribute('name');
+            document.getElementById(element+'L').remove();
         }
         </script>
         

@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Merienda');
 
 /*!
  * Bootstrap v4.6.2 (https://getbootstrap.com/)
@@ -7,15 +8,32 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
-.box1{
-     padding: 10px;
-     margin-bottom: 10px;
-     border: 1px solid #333333;
+
+.box2{
+  padding: 1rem 2rem;
+  border: 3px solid #fff;
+  margin:5px;
 }
 
-.btn{
-  margin-bottom: 10px;
+.weapon{
+  color:#fff;
 }
+
+.position{
+  color:#fff;
+}
+
+.top{
+  font-size: 2.25rem;
+  padding: 1rem 2rem;
+  border-top: 6px double #4c6cb3;
+  border-bottom: 6px double #4c6cb3;
+  color: #fff;
+  background-image: -webkit-gradient(linear, left top, right top, from(#f83600), to(#f9d423));　/*グラデーション　INKFIGHTERのタイトル*/
+  background-image: -webkit-linear-gradient(left, #f83600 0%, #f9d423 100%);
+  background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
+}
+
 
 :root {
   --blue: #3490dc;
@@ -83,6 +101,14 @@ body {
   color: #212529;
   text-align: left;
   background-color: #f8fafc;
+  
+  font-family: 'Merienda', cursive; /*フォント変更*/
+  background-image: url(../images/inksplash2.jpg); 
+  background-position: center center; 
+  background-repeat: no-repeat;  
+  background-attachment: fixed; 
+  background-size: cover;/*背景色*/
+  
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -105,9 +131,11 @@ h6 {
   margin-bottom: 0.5rem;
 }
 
+
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  color: #fff;
 }
 
 abbr[title],
@@ -264,15 +292,18 @@ button,
 select,
 optgroup,
 textarea {
-  margin: 0;
+  margin: 5px;
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  
 }
 
 button,
 input {
   overflow: visible;
+  padding:10px;
+  
 }
 
 button,
@@ -400,16 +431,43 @@ h6,
 h1,
 .h1 {
   font-size: 2.25rem;
+  padding: 1rem 2rem;
+  border-top: 6px double #4c6cb3;
+  border-bottom: 6px double #4c6cb3;
+  color: #fff;
+  background-image: -webkit-gradient(linear, left top, right top, from(#f83600), to(#f9d423));　/*グラデーション　INKFIGHTERのタイトル*/
+  background-image: -webkit-linear-gradient(left, #f83600 0%, #f9d423 100%);
+  background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
 }
 
 h2,
 .h2 {
+  display:inline-block;
   font-size: 1.8rem;
+  color: #fff;
+  position: relative;
+  padding: 0.5rem calc(1.5rem + 1px);
+  border: 2px solid #4c6cb3;
+}
+h2:after{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  content: '';
+  border-top: 2px solid #000;
+  background-image: -webkit-repeating-linear-gradient(135deg, #4c6cb3,#4c6cb3 1px, transparent 2px, transparent 5px);
+  background-image: repeating-linear-gradient(-45deg, #4c6cb3, #4c6cb3 1px, transparent 2px, transparent 5px);
+  background-size: 7px 7px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 h3,
 .h3 {
   font-size: 1.575rem;
+  color:#fff;
 }
 
 h4,
@@ -420,6 +478,7 @@ h4,
 h5,
 .h5 {
   font-size: 1.125rem;
+  color:#fff;
 }
 
 h6,
@@ -3412,6 +3471,7 @@ input[type=button].btn-block {
 
 .dropdown-toggle {
   white-space: nowrap;
+  color:#fff;
 }
 
 .dropdown-toggle::after {
@@ -3457,6 +3517,7 @@ input[type=button].btn-block {
 .dropdown-menu-right {
   right: 0;
   left: auto;
+  color:#fff;
 }
 
 @media (min-width: 576px) {
@@ -5257,8 +5318,12 @@ input[type=button].btn-block {
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
   list-style: none;
-  background-color: #e9ecef;
+  /*background-color: #e9ecef;*/
   border-radius: 0.25rem;
+}
+
+.breadcrumb-item {
+  color: white;
 }
 
 .breadcrumb-item + .breadcrumb-item {

@@ -43,7 +43,7 @@ class LoginController extends Controller
         $question = $this->guard()->user()->question;
         if($question === 0)
         {
-           return '/question';
+           return '/user/'. $this->guard()->user()->id .'/question';
         }
         return '/';
     }

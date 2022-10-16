@@ -17,7 +17,6 @@ class CreatePositionUserTable extends Migration
             $table->unsignedBigInteger('position_id');
             $table->unsignedBigInteger('user_id');
             $table->primary(['position_id','user_id']);
-            $table->timestamps();
         });
     }
 

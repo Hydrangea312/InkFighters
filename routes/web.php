@@ -12,18 +12,24 @@
 */
 //Route::group(['middleware'=>['auth']], function(){
 Route::get('/','PostController@index');
-Route::get('/question','PostController@question');
-Route::get('/weapon/create','PostController@weapon');
-Route::get('/profile/{user}','PostController@profile');
-Route::get('/team/want','PostController@team_wanted');
-Route::get('/team/want/post','PostController@team_post');
-Route::get('/opponent/want','PostController@opponent_wanted');
-Route::get('/opponent/want/post','PostController@opponent_post');
 
-Route::post('/weapon', 'PostController@store_weapon');
-Route::post('/user','PostController@store_user');
-Route::post('/team','PostController@store_team');
-Route::post('/opponent','PostController@store_opponent');
+Route::get('/user/{user}/question','UserController@question')->middleware('isQuestion');
+
+Route::get('/profile/{user}','UserController@profile');
+Route::get('/team/want','TeamController@team_wanted');
+Route::get('/team/want/post','TeamController@team_post');
+Route::get('/opponent/want','OpponentController@opponent_wanted');
+Route::get('/opponent/want/post','OpponentController@opponent_post');
+Route::get('/team/profile/{team}','TeamController@profile');
+
+//Route::post('/user','UserController@store_user');
+Route::post('/team','TeamController@store_team');
+Route::post('/opponent','OpponentController@store_opponent');
+
+Route::put('/user/{user}','UserController@store_user');
+Route::put('/storeteam','UserController@team');
+
+
 
 Auth::routes();
 Route::get('/home','HomeController@index')->name('home');
